@@ -6,6 +6,6 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
+#ENTRYPOINT ["python"]
 
-CMD ["run.py"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
